@@ -1,4 +1,3 @@
-const socket = io();
 const form = document.getElementById('form');
 const input = document.getElementById('input');
 const messages = document.getElementById('messages');
@@ -13,23 +12,10 @@ form.addEventListener('submit', function(e) {
         input.value = '';
     }
 });
-input.addEventListener("focusin",(e)=>{
-    socket.emit("user typing")
-})
-input.addEventListener("focusout",(e)=>{
-    socket.emit('update typing')
-})
+input.addEventListener("focusin",()=>socket.emit("user typing"));
+input.addEventListener("focusout",()=>socket.emit('update typing'));
 
-
-
-
-
-
-
-
-
-
-
+const socket = io();
 socket.on('update is typing', function(body) {
     isTyping.textContent = `${body.id} is typing ...`;
 });
