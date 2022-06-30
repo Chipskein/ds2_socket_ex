@@ -1,6 +1,6 @@
 const { Router }=require('express');
 const router=Router();
 router.get('/',(req,res,next)=>{
-    return res.sendFile(__dirname+'/index.html');
+    return res.redirect('/index.html');
 });
 module.exports=router
