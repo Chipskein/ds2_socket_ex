@@ -4,8 +4,8 @@
   "description": "socket exercise",
   "main": "index.js",
   "scripts": {
-    "dev":"nodemon --ignore ./src/tmp/ src/index.js",
-    "start":"node src/index.js"
+    "dev": "nodemon --ignore ./src/tmp/ src/index.js",
+    "start": "node src/index.js"
   },
   "repository": {
     "type": "git",
@@ -22,6 +22,7 @@
   },
   "dependencies": {
     "axios": "^0.27.2",
-    "express": "^4.18.1"
+    "express": "^4.18.1",
+    "socket.io": "^4.5.1"
   }
 }
