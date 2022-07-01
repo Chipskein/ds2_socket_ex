@@ -1,7 +1,7 @@
 {
-  "name": "ds2_socket_ex",
+  "name": "schat",
   "version": "1.0.0",
-  "description": "socket exercise",
+  "description": "socket exercise for ds2 discipline",
   "main": "index.js",
   "scripts": {
     "dev": "nodemon --ignore ./src/tmp/ src/index.js",
@@ -9,21 +9,19 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Chipskein/ds2_socket_ex.git"
+    "url": "git+https://github.com/Chipskein/schat.git"
   },
   "author": "Chipskein",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/Chipskein/ds2_socket_ex/issues"
+    "url": "https://github.com/Chipskein/schat/issues"
   },
-  "homepage": "https://github.com/Chipskein/ds2_socket_ex#readme",
+  "homepage": "https://github.com/Chipskein/schat#readme",
   "devDependencies": {
     "nodemon": "^2.0.16"
   },
   "dependencies": {
-    "axios": "^0.27.2",
     "express": "^4.18.1",
-    "jsonwebtoken": "^8.5.1",
     "socket.io": "^4.5.1"
   }
 }
