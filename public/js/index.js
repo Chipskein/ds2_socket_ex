@@ -10,6 +10,7 @@ inputSend.onclick=(e)=>{
         socket.emit('update typing')
         socket.emit('chat message', input.value);
         input.value = '';
+        input.blur();
     }
 }
 input.addEventListener("focusin",()=>socket.emit("user typing"));
