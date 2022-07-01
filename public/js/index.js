@@ -1,17 +1,17 @@
 const form = document.getElementById('form');
 const input = document.getElementById('input');
+const inputSend = document.getElementById('send');
 const messages = document.getElementById('messages');
 const users = document.getElementById('users');
 const isTyping = document.getElementById('isTyping');
-
-form.addEventListener('submit', function(e) {
+inputSend.onclick=(e)=>{
     e.preventDefault();
     if (input.value) {
         socket.emit('update typing')
         socket.emit('chat message', input.value);
         input.value = '';
     }
-});
+}
 input.addEventListener("focusin",()=>socket.emit("user typing"));
 input.addEventListener("focusout",()=>socket.emit('update typing'));
 
@@ -28,7 +28,7 @@ socket.on('update message', function(body) {
     isTyping.textContent="";
     body.map(message=>{
         const item = document.createElement('li');
-        item.textContent = `${message.userid} Escreveu: ${message.msg}`;
+        item.textContent = `[${new Date().toISOString()}] ${message.userid} says: ${message.msg}`;
         messages.appendChild(item);
     })
 
@@ -36,8 +36,8 @@ socket.on('update message', function(body) {
 socket.on('update users', function(body) {
     removeAllChildNodes(document.getElementById("users"));
     body.map(user=>{
-        var item = document.createElement('li');
-        item.textContent = `${user.id}[online]`;
+        const item = document.createElement('li');
+        item.textContent = `${user.id}`;
         item.id=body.id;
         users.appendChild(item);
     })

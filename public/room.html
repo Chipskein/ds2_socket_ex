@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="/imgs/icon.png" type="image/x-icon">
+    <link rel="stylesheet" href="/css/styles.css">
+    <title>SCHAT</title>
+</head>
+<body>
+    <header>
+        <div id="navbar">
+            <img src="/imgs/icon.png" alt="icon" id="icon">
+            <h1 class="title">SCHAT</h1>
+        </div>
+    </header>
+    <div id="root">
+        <div id="sidebar-div">
+            <h2 class="title">Online users</h2>
+            <div id="users"></div>
+        </div>
+        <div id="main-div">
+            <div id="messages"></div>
+        </div>
+        <span id="isTyping"></span>
+        <br>
+        <form id="form">
+            <input type="text" id="input" placeholder="Write a message">
+            <input type=image src="/imgs/send-message.png" alt="Submit feedback" class="image" id="send">
+        </form>
+    </div>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/js/index.js"></script>
+</body>
+</html>

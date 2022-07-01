@@ -1,8 +1,8 @@
-const { Server }=require("socket.io");
 let users=[];
 let messages=[];
+let usersTyping=[];
+
 module.exports={
-    socketIoServer:Server,
     onDisconnect:(socket,io)=>{
         console.log(socket.id+" Disconnected");
         io.emit('user out',{id:socket.id});
@@ -19,9 +19,8 @@ module.exports={
         io.emit('update users',users);
         io.emit('update message',messages);
     },
-    socketIoConfig:(io)=>{
+    socketIoSetup:(io)=>{
         io.on("connection",(socket)=>{
-            
             module.exports.newUser(socket,io)
                        
             socket.on('chat message', (msg) => module.exports.newMessage(msg,socket,io));
