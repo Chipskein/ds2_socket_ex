@@ -21,14 +21,22 @@ module.exports={
     },
     socketIoSetup:(io)=>{
         io.on("connection",(socket)=>{
-            module.exports.newUser(socket,io)
-                       
+            module.exports.newUser(socket,io)   
             socket.on('chat message', (msg) => module.exports.newMessage(msg,socket,io));
-            socket.on('user typing', () => io.emit('update is typing',{id:socket.id}));
-            socket.on('update typing', () => io.emit('update typing'));
-            socket.on('disconnect',()=>module.exports.onDisconnect(socket,io));    
+            
+
+
+            socket.on('user start typing', () => {
+                usersTyping.push({id:socket.id});
+                io.emit('update typing',usersTyping);
+            });
+            socket.on('user typing interrupted', () => {
+                usersTyping = usersTyping.filter( user => user.id != socket.id);
+                io.emit('update typing',usersTyping)
+            });
     
 
+            socket.on('disconnect',()=>module.exports.onDisconnect(socket,io));            
             io.emit('user in',{id:socket.id});
         });
     }
