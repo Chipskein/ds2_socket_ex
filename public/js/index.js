@@ -6,10 +6,11 @@ const users = document.getElementById('users');
 const isTyping = document.getElementById('isTyping');
 
 const socket = io();
+
 inputSend.onclick=(e)=>submitMessage(e);
+
 input.addEventListener("focusin",()=>socket.emit("user start typing"));
 input.addEventListener("focusout",()=>socket.emit('user typing interrupted'));
-
 
 socket.on('update typing',(usersTyping)=>updateTyping(usersTyping));
 socket.on('update message',(messagesArray)=>updateMessage(messagesArray));

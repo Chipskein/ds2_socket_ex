@@ -15,16 +15,16 @@ function updateTyping(usersTyping){
     removeAllChildNodes(isTyping);
     let ids=[]
     usersTyping.map(obj=>ids.push(obj.id));
-    let text=""; //ffasfasfas,fasfasf,afasfa is || are
+    let text="";
     text+=ids.join(',');
-    text+= ids.length>1 ? "are":"is"
+    text+= ids.length>1 ? " are":" is"
     isTyping.textContent = usersTyping.length>0  ? `${text} typing ...`:"";
 }
 function updateMessage(messagesArray){
     removeAllChildNodes(messages);
     messagesArray.map(message=>{
         const item = document.createElement('li');
-        item.textContent = `[${new Date().toISOString()}] ${message.userid} says: ${message.msg}`;
+        item.textContent = `[${message.date}] ${message.userid} says: ${message.msg}`;
         messages.appendChild(item);
     })
 }

@@ -11,7 +11,13 @@ module.exports={
         module.exports.rmUsersTyping(socket,io);
     },
     newMessage:(msg,socket,io)=>{
-        messages.push({userid:socket.id,msg});
+        let date=new Date();
+        date=`${date.getFullYear()}-${date.getMonth()}-${date.getDate()} ${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}`
+        messages.push({
+            msg,
+            userid:socket.id,
+            date
+        });
         io.emit('update message',messages);
     },
     newUser:(socket,io)=>{
