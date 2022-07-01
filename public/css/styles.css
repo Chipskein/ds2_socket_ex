@@ -45,6 +45,7 @@ body{
     height: 700px;
     width: 80%;
     overflow-y: scroll;
+    scroll-behavior: smooth;
 }
 #messages{
     color: rgb(151, 238, 20);

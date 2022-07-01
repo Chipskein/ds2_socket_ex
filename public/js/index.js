@@ -4,6 +4,7 @@ const inputSend = document.getElementById('send');
 const messages = document.getElementById('messages');
 const users = document.getElementById('users');
 const isTyping = document.getElementById('isTyping');
+const main_div=document.getElementById('main-div');
 
 const socket = io();
 
@@ -11,6 +12,7 @@ inputSend.onclick=(e)=>submitMessage(e);
 
 input.addEventListener("focusin",()=>socket.emit("user start typing"));
 input.addEventListener("focusout",()=>socket.emit('user typing interrupted'));
+document.addEventListener('keydown', ()=>input.focus());
 
 socket.on('update typing',(usersTyping)=>updateTyping(usersTyping));
 socket.on('update message',(messagesArray)=>updateMessage(messagesArray));

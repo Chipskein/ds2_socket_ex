@@ -27,6 +27,7 @@ function updateMessage(messagesArray){
         item.textContent = `[${message.date}] ${message.userid} says: ${message.msg}`;
         messages.appendChild(item);
     })
+    main_div.scrollTo(0,main_div.scrollHeight);
 }
 function updateUsers(usersArray){
     removeAllChildNodes(users);
