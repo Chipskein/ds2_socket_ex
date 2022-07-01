@@ -19,23 +19,20 @@ module.exports={
         io.emit('update users',users);
         io.emit('update message',messages);
     },
+    addUsersTyping:(socket)=>{
+        usersTyping.push({id:socket.id});
+        io.emit('update typing',usersTyping);
+    },
+    rmUsersTyping:(socket)=>{
+        usersTyping = usersTyping.filter( user => user.id != socket.id);
+        io.emit('update typing',usersTyping)
+    },
     socketIoSetup:(io)=>{
         io.on("connection",(socket)=>{
             module.exports.newUser(socket,io)   
             socket.on('chat message', (msg) => module.exports.newMessage(msg,socket,io));
-            
-
-
-            socket.on('user start typing', () => {
-                usersTyping.push({id:socket.id});
-                io.emit('update typing',usersTyping);
-            });
-            socket.on('user typing interrupted', () => {
-                usersTyping = usersTyping.filter( user => user.id != socket.id);
-                io.emit('update typing',usersTyping)
-            });
-    
-
+            socket.on('user start typing', () => module.exports.addUsersTyping(socket));
+            socket.on('user typing interrupted', () => module.exports.rmUsersTyping(socket));
             socket.on('disconnect',()=>module.exports.onDisconnect(socket,io));            
             io.emit('user in',{id:socket.id});
         });
