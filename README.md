@@ -3,7 +3,7 @@
 <img style="width:120px;background-color:white;" src="https://raw.githubusercontent.com/Chipskein/schat/main/public/imgs/icon.png">
 
 ## Description
-***Simple chat-room created to System Development II Discipline at IFRS,created with nodejs and socket.io
+***Simple chat-room created to System Development II Discipline at IFRS,created with nodejs and socket.io***
 
 ## You can test [here](https://schat-ifrs.herokuapp.com/)
 
